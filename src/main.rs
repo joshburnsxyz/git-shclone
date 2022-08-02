@@ -6,12 +6,22 @@ fn main() {
     let matches = command!()
         .arg(arg!([REPO]))
         .arg(arg!([DEST]).default_value(&format!("./")))
-        .arg(arg!(-h --host [HOST], "One of: github, gitlab"]))
+        .arg(arg!(-h --host [HOST], "One of: github, gitlab"]).default_value(&format!("github")))
         .get_matches();
     
-    let repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap());
+    let repo_url;
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
     let _git_host = matches.get_one::<String>("HOST").unwrap();
+
+    // Validate --host option and set repo_url accordingly
+    match _git_host {
+        String::from("github") => repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        String::from("gitlab") => repo_url = format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        _ => {
+            eprintln!("Invalid git host, please check and try again.");
+            exit(1);
+        } 
+    }
 
     let output = Command::new("git")
         .args(["clone", &repo_url, &dest_path])
