@@ -9,14 +9,13 @@ fn main() {
         .arg(arg!(-h --host [HOST], "One of: github, gitlab").default_value("github"))
         .get_matches();
     
-    let repo_url;
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
     let _git_host = matches.get_one::<String>("HOST").unwrap();
 
     // Validate --host option and set repo_url accordingly
-    match _git_host {
-        "github".to_owned() => repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
-        "gitlab".to_owned() => repo_url = format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
+    let repo_url = match _git_host {
+        "github".to_owned() => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        "gitlab".to_owned() => format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
         _ => {
             eprintln!("Invalid git host, please check and try again.");
             exit(1);
