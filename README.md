@@ -58,3 +58,10 @@ mv target/release/git-shclone /usr/bin/git-shclone
 ```
 git shclone --help
 ```
+
+## Todo
+
+- [ ] If supplied with a HTTP(S) URL, transform it into the SSH version
+- [ ] Refactor to make things not Github specific
+- [ ] Implement toolchain / scripts to build for all 3 major platforms to provide release binaries
+- [ ] Packaging for (major desktop) Linux distros
