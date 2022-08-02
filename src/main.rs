@@ -1,5 +1,6 @@
 use clap::{arg,command};
 use std::process::{Command,exit};
+use std::io::{self, Write};
 
 fn main() {
     let matches = command!()
@@ -8,10 +9,11 @@ fn main() {
         .get_matches();
     let repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap());
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
-    println!("{:#?}", Command::new("git")
+    let output = Command::new("git")
         .args(["clone", &repo_url, &dest_path])
         .output()
-        .expect("fail"));
-
+        .expect("fail");
+    io::stdout().write_all(&output.stdout).unwrap();
+    io::stderr().write_all(&output.stderr).unwrap();
     exit(0);
 }
