@@ -2,7 +2,8 @@
 
 [![Rust](https://github.com/joshburnsxyz/git-shclone/actions/workflows/ci.yml/badge.svg)](https://github.com/joshburnsxyz/git-shclone/actions/workflows/ci.yml)
 
-Git plugin that provides a shortcut to clone repos from github using SSH urls.
+Git plugin that provides a shortcut to clone repos from github using SSH urls. In the future I plan on refactoring
+the interface to make things not github specific.
 
 __BEFORE__:
 
