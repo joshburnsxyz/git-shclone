@@ -6,7 +6,7 @@ fn main() {
     let matches = command!()
         .arg(arg!([REPO]))
         .arg(arg!([DEST]).default_value(&format!("./")))
-        .arg(arg!(-h --host [HOST], "One of: github, gitlab"]).default_value(&format!("github"))))
+        .arg(arg!(-h --host [HOST], "One of: github, gitlab").default_value(&format!("github"))))
         .get_matches();
     
     let repo_url;
