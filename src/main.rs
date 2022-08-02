@@ -14,17 +14,15 @@ fn main() {
 
     // Validate --host option and set repo_url accordingly
     let repo_url = match _git_host {
-        "github".to_owned() => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
-        "gitlab".to_owned() => format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        "github" => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        "gitlab" => format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
         _ => {
             eprintln!("Invalid git host, please check and try again.");
             exit(1);
-        } 
-    }
+        }
+    };
 
-    let output = Command::new("git")
-        .args(["clone", &repo_url, &dest_path])
-        .output()
+    let output = Command::new("git").args(["clone", &repo_url, &dest_path]).output()
         .expect(&format!("git-shclone failed to clone {} to {}", &repo_url, &dest_path));
 
     // Write command output to respective IO streams
