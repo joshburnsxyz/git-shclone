@@ -15,8 +15,8 @@ fn main() {
 
     // Validate --host option and set repo_url accordingly
     match _git_host {
-        "github" => repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
-        "gitlab" => repo_url = format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        "github".to_owned() => repo_url = format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
+        "gitlab".to_owned() => repo_url = format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
         _ => {
             eprintln!("Invalid git host, please check and try again.");
             exit(1);
