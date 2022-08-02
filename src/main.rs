@@ -16,7 +16,7 @@ fn main() {
     let output = Command::new("git")
         .args(["clone", &repo_url, &dest_path])
         .output()
-        .expect("fail");
+        .expect(format!("git-shclone failed to clone {} to {}", &repo_url, &dest_path));
 
     // Write command output to respective IO streams
     io::stdout().write_all(&output.stdout).unwrap();
