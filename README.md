@@ -33,6 +33,8 @@ OPTIONS:
 
 ## Installation
 
+> Linux package managers, Homebrew, etc. coming soon 
+
 ### Build From Source
 
 > Requires working Rust toolchain and Cargo installation
@@ -64,4 +66,4 @@ git shclone --help
 - [ ] If supplied with a HTTP(S) URL, transform it into the SSH version
 - [ ] Refactor to make things not Github specific
 - [ ] Implement toolchain / scripts to build for all 3 major platforms to provide release binaries
-- [ ] Packaging for (major desktop) Linux distros
+- [ ] Packaging for (major desktop) Linux distros, Homebrew, etc.
