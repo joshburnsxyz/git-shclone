@@ -5,9 +5,9 @@ use std::io::{self, Write};
 fn main() {
     let matches = command!()
         .args([
-            arg!([REPO]),
-            arg!([DEST]).default_value(&format!("./")),
-            arg!(-h --host [HOST], "One of: github, gitlab").default_value("github")
+            arg!([REPO] "The github repo i.e username/repo"),
+            arg!([DEST] "Where to clone to repo too").default_value(&format!("./")),
+            arg!(-h --host [HOST] "One of: github, gitlab").default_value("github")
         ])
         .get_matches();
     
