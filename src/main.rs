@@ -7,7 +7,7 @@ fn main() {
         .args([
             arg!([REPO] "The github repo i.e username/repo"),
             arg!([DEST] "Where to clone to repo too").default_value(&format!("./")),
-            arg!(-h --host [HOST] "One of: github, gitlab").default_value("github")
+            arg!(-H --host [HOST] "One of: github, gitlab").default_value("github")
         ])
         .get_matches();
     
