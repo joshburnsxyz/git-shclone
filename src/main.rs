@@ -4,9 +4,11 @@ use std::io::{self, Write};
 
 fn main() {
     let matches = command!()
-        .arg(arg!([REPO]))
-        .arg(arg!([DEST]).default_value(&format!("./")))
-        .arg(arg!(-h --host [HOST], "One of: github, gitlab").default_value("github"))
+        .args([
+            arg!([REPO]),
+            arg!([DEST]).default_value(&format!("./")),
+            arg!(-h --host [HOST], "One of: github, gitlab").default_value("github")
+        ])
         .get_matches();
     
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
