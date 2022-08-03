@@ -19,7 +19,9 @@ fn main() {
         "github" => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
         "gitlab" => format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
         _ => {
-            eprintln!("Invalid git host, please check and try again.");
+            eprintln!("Invalid git host, please use one of the following.");
+            eprintln!("* github");
+            eprintln!("* gitlab");
             exit(1);
         }
     };
