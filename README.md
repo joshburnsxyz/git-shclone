@@ -68,3 +68,5 @@ git shclone --help
 - [ ] Refactor to make things not Github specific
 - [ ] Implement toolchain / scripts to build for all 3 major platforms to provide release binaries
 - [ ] Packaging for (major desktop) Linux distros, Homebrew, etc.
+- [ ] Use a `Makefile` to automate build steps and installation
+- [ ] Use `.gitconfig` files to assume default host choice, etc.
