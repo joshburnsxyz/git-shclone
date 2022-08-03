@@ -12,10 +12,10 @@ fn main() {
         .get_matches();
     
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
-    let _git_host = matches.get_one::<String>("HOST").unwrap();
+    let git_host = matches.get_one::<String>("HOST").unwrap();
 
     // Validate --host option and set repo_url accordingly
-    let repo_url = match _git_host {
+    let repo_url = match git_host.as_str() {
         "github" => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
         "gitlab" => format!("git@gitlab.com:{}", matches.get_one::<String>("REPO").unwrap()),
         _ => {
