@@ -20,16 +20,19 @@ $ git shclone joshburnsxyz/git-shclone
 ## Usage
 
 ```
+git-shclone 0.1.1
+
 USAGE:
-    git-shclone [ARGS]
+    git-shclone [OPTIONS] [--] [ARGS]
 
 ARGS:
-    <REPO>
-    <DEST>    [default: ./]
+    <REPO>    The github repo i.e username/repo
+    <DEST>    Where to clone to repo too [default: ./]
 
 OPTIONS:
-    -h, --help       Print help information
-    -V, --version    Print version information
+    -h, --help                Print help information
+    -H, --host [<HOST>...]    One of: github, gitlab [default: github]
+    -V, --version             Print version information
 ```
 
 ## Installation
