@@ -10,9 +10,12 @@ fn main() {
             arg!(-H --host [HOST] "One of: github, gitlab").default_value("github")
         ])
         .get_matches();
-    
-    let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
+
+    let dest_path_v: Vec<&str> = matches.get_one::<String>("REPO").unwrap().split("/").collect();
+    let dest_path = format!("./{}", dest_path_v[1]);
     let git_host = matches.get_one::<String>("host").unwrap();
+
+    println!("DEBUG: Provided dest_path value: {}", dest_path);
 
     // Validate --host option and set repo_url accordingly
     let repo_url = match git_host.as_str() {
