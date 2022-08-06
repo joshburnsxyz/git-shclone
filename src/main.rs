@@ -12,7 +12,7 @@ fn main() {
         .get_matches();
     
     let dest_path = format!("./{}", matches.get_one::<String>("REPO").unwrap().split("/").next().unwrap());
-    let git_host = matches.get_one::<String>("HOST").unwrap();
+    let git_host = matches.get_one::<String>("host").unwrap();
 
     // Validate --host option and set repo_url accordingly
     let repo_url = match git_host.as_str() {
