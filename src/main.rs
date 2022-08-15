@@ -15,8 +15,6 @@ fn main() {
     let dest_path = format!("./{}", dest_path_v[1]);
     let git_host = matches.get_one::<String>("host").unwrap();
 
-    println!("DEBUG: Provided dest_path value: {}", dest_path);
-
     // Validate --host option and set repo_url accordingly
     let repo_url = match git_host.as_str() {
         "github" => format!("git@github.com:{}", matches.get_one::<String>("REPO").unwrap()),
