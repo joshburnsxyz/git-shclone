@@ -6,13 +6,10 @@ fn main() {
     let matches = command!()
         .args([
             arg!([REPO] "The github repo i.e username/repo"),
-            arg!([DEST] "Where to clone to repo too").default_value(&format!("./")),
             arg!(-H --host [HOST] "One of: github, gitlab").default_value("github")
         ])
         .get_matches();
 
-    let dest_path_v: Vec<&str> = matches.get_one::<String>("REPO").unwrap().split("/").collect();
-    let dest_path = format!("./{}", dest_path_v[1]);
     let git_host = matches.get_one::<String>("host").unwrap();
 
     // Validate --host option and set repo_url accordingly
@@ -27,8 +24,8 @@ fn main() {
         }
     };
 
-    let output = Command::new("git").args(["clone", &repo_url, &dest_path]).output()
-        .expect(&format!("git-shclone failed to clone {} to {}", &repo_url, &dest_path));
+    let output = Command::new("git").args(["clone", &repo_url]).output()
+        .expect(&format!("git-shclone failed to clone {}", &repo_url));
 
     // Write command output to respective IO streams
     io::stdout().write_all(&output.stdout).unwrap();
