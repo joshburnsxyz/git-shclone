@@ -27,7 +27,6 @@ USAGE:
 
 ARGS:
     <REPO>    The github repo i.e username/repo
-    <DEST>    Where to clone to repo too [default: ./]
 
 OPTIONS:
     -h, --help                Print help information
